@@ -34,7 +34,7 @@ def print_text_py(text):
     if text is None:
         text = 'is cool'
     formatted_text = text.replace('_', ' ')
-    return f'C {escape(formatted_text)}'
+    return f'Python {escape(formatted_text)}'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
