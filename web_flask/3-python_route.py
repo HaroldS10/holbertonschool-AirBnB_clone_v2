@@ -25,6 +25,12 @@ def define_route():
 
 @app.route('/c/<text>', strict_slashes=False)
 def print_text(text):
+    formatted_text = text.replace('_', ' ')
+    return f'C {escape(formatted_text)}'
+
+
+@app.route('/python/<text>', strict_slashes=False)
+def print_text_py(text):
     if not text:
         return'is cool'
     formatted_text = text.replace('_', ' ')
