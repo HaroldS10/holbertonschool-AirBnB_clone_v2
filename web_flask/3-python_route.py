@@ -29,10 +29,9 @@ def print_text(text):
     return f'C {escape(formatted_text)}'
 
 
+@app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def print_text_py(text= 'is cool'):
-    if text is None:
-       return text 
+def print_text_py(text):
     formatted_text = text.replace('_', ' ')
     return f'Python {escape(formatted_text)}'
 
