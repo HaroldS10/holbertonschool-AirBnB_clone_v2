@@ -30,9 +30,9 @@ def print_text(text):
 
 
 @app.route('/python/<text>', strict_slashes=False)
-def print_text_py(text):
+def print_text_py(text= 'is cool'):
     if text is None:
-       return (text = 'is cool')
+       return text 
     formatted_text = text.replace('_', ' ')
     return f'Python {escape(formatted_text)}'
 
