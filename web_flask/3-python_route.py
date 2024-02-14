@@ -1,45 +1,48 @@
 #!/usr/bin/python3
-
-
-"""Starts a Flask web application.
-
-The application listens on 0.0.0.0, port 5000.
-Routes:
-    /: Displays 'Hello HBNB!'.
-    /hbnb: Displays 'HBNB'.
-    /c/<text>: Displays 'C' followed by the value of <text>.
-    /python/(<text>): Displays 'Python' followed by the value of <text>.
 """
-
-
+flask first exercise
+"""
 from flask import Flask
-from markupsafe import escape
 
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-# We use route() decorator to tell Flask which URL should trigger our function
-def first_route():
-    return'Hello HBNB!'
+def hello_hbnb():
+    """
+    Returns:
+        Hello HBNB
+    """
+    return 'Hello HBNB!'
 
 
 @app.route('/hbnb', strict_slashes=False)
-def define_route():
-    return'HBNB'
+def hbnb():
+    """
+    Returns:
+        HBNB
+    """
+    return 'HBNB'
 
 
 @app.route('/c/<text>', strict_slashes=False)
 def print_text(text):
-    formatted_text = text.replace('_', ' ')
-    return f'C {escape(formatted_text)}'
+    """
+    Returns:
+        f format, c text
+    """
+    return f'C {text}'.replace('_', ' ')
 
 
-@app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def print_text_py(text):
-    formatted_text = text.replace('_', ' ')
-    return f'Python {escape(formatted_text)}'
+@app.route('/python/', strict_slashes=False)
+def print_txt(text='is_cool'):
+    """
+    Returns:
+        f format, c text
+    """
+    return "Python " + text.replace('_', ' ')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
